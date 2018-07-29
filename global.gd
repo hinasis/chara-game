@@ -11,6 +11,7 @@ func _ready():
 	delayer.wait_time = 0.01
 	delayer.one_shot = true
 	add_child(delayer)
+	#-- comment
 
 func setScene(sceneName=""):
 	var fl = File.new()
