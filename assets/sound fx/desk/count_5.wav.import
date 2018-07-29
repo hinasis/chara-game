@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/count_5.wav-ff10ccc832a95ee0b78cdea15d7eafe2.sample"
+
+[deps]
+
+source_file="res://assets/sound fx/desk/count_5.wav"
+dest_files=[ "res://.import/count_5.wav-ff10ccc832a95ee0b78cdea15d7eafe2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

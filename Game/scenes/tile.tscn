@@ -1,0 +1,238 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Game/scripts/tile.gd" type="Script" id=1]
+[ext_resource path="res://Game/scripts/tile_props.gd" type="Script" id=2]
+[ext_resource path="res://Game/scripts/tile_info.gd" type="Script" id=3]
+[ext_resource path="res://Game/scripts/tile_status.gd" type="Script" id=4]
+[ext_resource path="res://assets/desk/white_60_x_60.png" type="Texture" id=5]
+[ext_resource path="res://assets/desk/shadow_border.png" type="Texture" id=6]
+[ext_resource path="res://assets/shine_shader.shader" type="Shader" id=7]
+[ext_resource path="res://assets/game_ui/highlight_move.png" type="Texture" id=8]
+[ext_resource path="res://assets/game_ui/highlight_attack.png" type="Texture" id=9]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 color_sum :hint_color = vec4(0.0,0.0,0.0,0.0);
+
+void fragment(){
+	COLOR = texture(TEXTURE,UV);
+	COLOR += color_sum;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/color_sum = null
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+shader = ExtResource( 7 )
+shader_param/color = null
+shader_param/shine_value = null
+shader_param/time_scale = null
+
+[node name="Tile" type="CenterContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+use_top_left = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "Mouse" ]
+border_color = Color( 1, 1, 1, 1 )
+
+[node name="tile_props" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+chara_effects = {
+
+}
+terrain_effects = {
+
+}
+event_effects = {
+
+}
+support_effects = {
+
+}
+stadio_effects = {
+
+}
+band_effects = {
+
+}
+has_insides = 0
+insides_capacity = 0
+event_duration = 0
+band_duraction = 0
+has_attacked = false
+attack_count = 0
+current_attack_count = 0
+has_moved = false
+move_count = 0
+current_move_count = 0
+hp_damage_count = 0
+sp_damage_count = 0
+is_pet = false
+
+[node name="tile_info" type="Node" parent="." index="1"]
+
+script = ExtResource( 3 )
+from = ""
+row = -1
+column = -1
+team = ""
+type = ""
+tile_id = -1
+is_big = 0
+
+[node name="tile_status" type="Node" parent="." index="2"]
+
+script = ExtResource( 4 )
+selected = false
+highlited = false
+occuped = false
+terrain_ocupped = false
+event_ocupped = false
+card_owner = ""
+terrain_owner = ""
+event_owner = ""
+card_type = ""
+card_placed = -1
+terrain_placed = -1
+event_placed = -1
+
+[node name="Background" type="TextureRect" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+
+[node name="Portrait" type="TextureRect" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 55.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch_mode = 0
+
+[node name="Select Aura" type="TextureRect" parent="." index="5"]
+
+visible = false
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 0
+_sections_unfolded = [ "Material" ]
+
+[node name="Highlight Shine" type="TextureRect" parent="." index="6"]
+
+visible = false
+self_modulate = Color( 1, 1, 1, 0.2 )
+material = SubResource( 3 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Highlight Move" type="TextureRect" parent="." index="7"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 57.0
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 8 )
+stretch_mode = 0
+
+[node name="Highlight Attack" type="TextureRect" parent="." index="8"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 57.0
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+stretch_mode = 0
+
+

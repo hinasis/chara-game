@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/move_2.wav-1e5beaccb552742f5d7e39215d811386.sample"
+
+[deps]
+
+source_file="res://assets/sound fx/desk/move_2.wav"
+dest_files=[ "res://.import/move_2.wav-1e5beaccb552742f5d7e39215d811386.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
