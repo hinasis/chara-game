@@ -5,6 +5,8 @@ onready var no_button = $ExitMenu/VBOX/HBOX/NoButton
 
 func exitGame():
 	get_tree().quit()
+	pass
+	
 func goBackTo():
 	if get_node("/root/global").previousSceneName == "Lobby":
 		get_node("/root/global").delayNextScene("Lobby")
